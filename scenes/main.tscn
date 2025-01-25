@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://vh6ccnjmqm1d"]
+
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_7cf2f"]
+[ext_resource type="Texture2D" uid="uid://dwftm5xvtaosg" path="res://sprites/bg.png" id="1_jlrbf"]
+[ext_resource type="Script" path="res://scenes/bubble.gd" id="1_mmlu5"]
+[ext_resource type="PackedScene" uid="uid://bigk8cqannk3x" path="res://scenes/pipe.tscn" id="2_w51ik"]
+[ext_resource type="Texture2D" uid="uid://bn85k0vlbhvx3" path="res://Assets/bubble placeholder.png" id="4_ima51"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yw3j2"]
+radius = 45.0
+
+[node name="Main" type="Node"]
+script = ExtResource("1_7cf2f")
+pipeScene = ExtResource("2_w51ik")
+
+[node name="bubble" type="CharacterBody2D" parent="." node_paths=PackedStringArray("Main")]
+position = Vector2(123, 298)
+script = ExtResource("1_mmlu5")
+Main = NodePath("..")
+
+[node name="Sprite2D" type="Sprite2D" parent="bubble"]
+z_index = 5
+scale = Vector2(0.705, 0.705)
+texture = ExtResource("4_ima51")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bubble"]
+shape = SubResource("CircleShape2D_yw3j2")
+
+[node name="bg" type="Sprite2D" parent="."]
+show_behind_parent = true
+position = Vector2(319, 319.5)
+scale = Vector2(0.738426, 0.829427)
+texture = ExtResource("1_jlrbf")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
