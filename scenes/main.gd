@@ -19,12 +19,13 @@ func newGame():
 	score = 0
 	pipes.clear()
 	_on_timer_timeout()
+	startGame() #remove this once blowing bubble start thing is finished
 	
 func startGame():
 	gameRun=true;
 	$Timer.start()
 	
-func _input(event):
+func _input(event): # temp start game condition
 	if !gameRun:
 		if event is InputEventMouseButton:
 			if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
