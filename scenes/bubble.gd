@@ -6,15 +6,24 @@ const pSpeed = 200.0
 const lSpeed = 2.0 
 const xThresh = -100
 
+var isBlowing: bool
+
 func _physics_process(delta: float) -> void:
 	if Main.gameRun:
-		var direction := Input.get_axis("ui_up", "ui_down")
-		if direction:
-			velocity.y = direction * pSpeed
-		else: 
-			velocity.y = 0;
+		if isBlowing:
+			velocity.y = -1 * pSpeed
+
+		velocity += get_gravity()*delta*0.5
+
 		if position.y < 0 || position.y > get_window().size.y:
-			$Main.stopGame()
+			Main.stopGame()
 			
 		
 	move_and_slide()
+
+
+func _on_main_audio_changed(db_level: Variant) -> void:
+	if db_level > -20:
+		isBlowing = true
+	else:
+		isBlowing = false

@@ -1,6 +1,8 @@
 extends Node
 @export var pipeScene : PackedScene
 
+signal audio_changed(db_level)
+
 var gameRun : bool
 var score
 const scrollSpeed : int = 2
@@ -37,6 +39,9 @@ func _process(delta: float) -> void:
 	if gameRun:
 		for pipe in pipes:
 			pipe.position.x -= scrollSpeed
+	
+	var db_level = AudioServer.get_bus_peak_volume_left_db(AudioServer.get_bus_index("Capture"), 0)
+	audio_changed.emit(db_level)
 	
 	
 

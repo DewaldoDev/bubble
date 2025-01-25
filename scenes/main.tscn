@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://vh6ccnjmqm1d"]
+[gd_scene load_steps=8 format=3 uid="uid://vh6ccnjmqm1d"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_7cf2f"]
 [ext_resource type="Texture2D" uid="uid://dwftm5xvtaosg" path="res://sprites/bg.png" id="1_jlrbf"]
@@ -8,6 +8,8 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yw3j2"]
 radius = 45.0
+
+[sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_femvl"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_7cf2f")
@@ -33,6 +35,12 @@ scale = Vector2(0.738426, 0.829427)
 texture = ExtResource("1_jlrbf")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 3.0
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamMicrophone_femvl")
+autoplay = true
+bus = &"Capture"
+
+[connection signal="audio_changed" from="." to="bubble" method="_on_main_audio_changed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
