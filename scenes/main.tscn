@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://vh6ccnjmqm1d"]
+[gd_scene load_steps=28 format=3 uid="uid://vh6ccnjmqm1d"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_7cf2f"]
 [ext_resource type="Script" path="res://scenes/bubble.gd" id="1_mmlu5"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://1k1a222lyx1w" path="res://Assets/set.png" id="17_7iorw"]
 [ext_resource type="AudioStream" uid="uid://1kf71dqar3pp" path="res://addons/audioFiles/obsticle complete (2).mp3" id="18_uo26a"]
 [ext_resource type="AudioStream" uid="uid://yf47lqh5cgc4" path="res://addons/audioFiles/pop sound.mp3" id="19_fr5et"]
+[ext_resource type="AudioStream" uid="uid://ctlks18sok7nt" path="res://addons/audioFiles/bubble inflation.mp3" id="20_72oa4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yw3j2"]
 radius = 45.0
@@ -336,13 +337,13 @@ position = Vector2(308, 544)
 scale = Vector2(0.404387, 0.377246)
 sprite_frames = SubResource("SpriteFrames_oal52")
 animation = &"ready"
+frame_progress = 0.20237
 
 [node name="IntroAnimation" type="AnimationPlayer" parent="IntroText"]
+unique_name_in_owner = true
 libraries = {
 "": SubResource("AnimationLibrary_wpea4")
 }
-
-[node name="blowSFX" type="AudioStreamPlayer2D" parent="."]
 
 [node name="scoreSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("18_uo26a")
@@ -352,6 +353,10 @@ volume_db = 1.253
 stream = ExtResource("19_fr5et")
 volume_db = 1.253
 pitch_scale = 1.04
+
+[node name="blowSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("20_72oa4")
+volume_db = 1.253
 
 [connection signal="audio_changed" from="." to="bubble" method="_on_main_audio_changed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

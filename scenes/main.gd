@@ -22,9 +22,12 @@ const soundThresh: int = -20
 var pipeGap : int = 200
 var scrollSpeed : float = 2
 
+var animFinished : bool = false
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$IntroText/IntroAnimation.play("intro_animation")
 	screen_size = get_window().size
 	newGame()
 
@@ -50,7 +53,6 @@ func startGame():
 func _process(delta: float) -> void:
 	
 	
-	
 	var db_level = AudioServer.get_bus_peak_volume_left_db(AudioServer.get_bus_index("Capture"), 0)
 	audio_changed.emit(db_level)
 	if gameRun:
@@ -61,7 +63,10 @@ func _process(delta: float) -> void:
 		for pipe in pipes:
 			pipe.position.x -= scrollSpeed
 	else: 
-		if startWaiting:
+		if startWaiting && !$IntroText/IntroAnimation.is_playing():
+			if(!animFinished):
+				$IntroText/IntroAnimation.play("RESET")
+				animFinished=true
 			if db_level > soundThresh || Input.is_anything_pressed():
 				$bubble.scale += scaleAdd
 				if($bubble.scale.x >= 1):
