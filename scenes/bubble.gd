@@ -10,15 +10,16 @@ var isBlowing: bool
 
 func _physics_process(delta: float) -> void:
 	if Main.gameRun:
-		if isBlowing:
+		if isBlowing || Input.get_axis("ui_up", "ui_down"):
 			velocity.y = -1 * pSpeed
 
-		velocity += get_gravity()*delta*0.5
+		velocity += get_gravity()*delta*0.4
 
 		if position.y < 0 || position.y > get_window().size.y:
 			Main.stopGame()
 			
-		
+	else:
+		velocity.y = 0;
 	move_and_slide()
 
 
@@ -27,3 +28,6 @@ func _on_main_audio_changed(db_level: Variant) -> void:
 		isBlowing = true
 	else:
 		isBlowing = false
+
+func pop():
+	$AnimatedSprite2D.play("death")

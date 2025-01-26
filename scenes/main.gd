@@ -8,7 +8,8 @@ var score
 const scrollSpeed : int = 2
 var pipes : Array
 const pipeDelay : int = 100
-const pipeRange : int = 200
+const pipeRange : int = 150
+const pipeGap : int = 200;
 var screen_size : Vector2i
 
 # Called when the node enters the scene tree for the first time.
@@ -43,22 +44,34 @@ func _process(delta: float) -> void:
 	var db_level = AudioServer.get_bus_peak_volume_left_db(AudioServer.get_bus_index("Capture"), 0)
 	audio_changed.emit(db_level)
 	
-	
 
 func _on_timer_timeout() -> void:
-	var pipeObj = pipeScene.instantiate()
-	pipeObj.scale = Vector2(2,2)
-	pipeObj.position.x = screen_size.x + pipeDelay
-	pipeObj.position.y = (screen_size.y) / 2 + randi_range(-pipeRange, pipeRange)
-	pipeObj.hit.connect(stopGame)
-	pipeObj.scored.connect(scoreIncrement)
-	add_child(pipeObj)
-	pipes.append(pipeObj)
+	var pipeObj1 = pipeScene.instantiate()
+	var pipeObj2 = pipeScene.instantiate()
 	
+	pipeObj1.scale = Vector2(2,2)
+	pipeObj2.scale = Vector2(2,-2)
+	
+	pipeObj1.position.x = screen_size.x + pipeDelay
+	pipeObj2.position.x = screen_size.x + pipeDelay
+
+	pipeObj1.position.y = (screen_size.y) / 1.8 + randi_range(-pipeRange, pipeRange)
+	pipeObj2.position.y = pipeObj1.position.y - pipeGap;
+
+	pipeObj1.hit.connect(stopGame)
+	pipeObj2.hit.connect(stopGame)
+
+	pipeObj1.scored.connect(scoreIncrement)
+	
+	add_child(pipeObj1)
+	add_child(pipeObj2)
+	pipes.append(pipeObj1)
+	pipes.append(pipeObj2)
+
 func stopGame():
 	$Timer.stop()
 	gameRun=false
-	print("you died")
+	$bubble.pop()
 
 func scoreIncrement():
 	score+=1

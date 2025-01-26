@@ -1,13 +1,53 @@
-[gd_scene load_steps=8 format=3 uid="uid://vh6ccnjmqm1d"]
+[gd_scene load_steps=15 format=3 uid="uid://vh6ccnjmqm1d"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_7cf2f"]
 [ext_resource type="Texture2D" uid="uid://dwftm5xvtaosg" path="res://sprites/bg.png" id="1_jlrbf"]
 [ext_resource type="Script" path="res://scenes/bubble.gd" id="1_mmlu5"]
 [ext_resource type="PackedScene" uid="uid://bigk8cqannk3x" path="res://scenes/pipe.tscn" id="2_w51ik"]
-[ext_resource type="Texture2D" uid="uid://bn85k0vlbhvx3" path="res://Assets/bubble placeholder.png" id="4_ima51"]
+[ext_resource type="Texture2D" uid="uid://lit4v2c83i6u" path="res://Assets/bub_pop_frame_1.png" id="4_hb5ql"]
+[ext_resource type="Texture2D" uid="uid://b2v2xdm464t5p" path="res://Assets/bub_pop_frame_2.png" id="5_mk21v"]
+[ext_resource type="Texture2D" uid="uid://dqysy53haldby" path="res://Assets/bub_pop_frame_3.png" id="6_xl0y6"]
+[ext_resource type="Texture2D" uid="uid://fmn20twwudia" path="res://Assets/bub_pop_frame_4.png" id="7_3qpk8"]
+[ext_resource type="Texture2D" uid="uid://bclsqulwc4vmw" path="res://Assets/bub_pop_frame_5.png" id="8_o5vy8"]
+[ext_resource type="Texture2D" uid="uid://visbj6fq2hvc" path="res://Assets/bub_pop_frame_6.png" id="9_bx44h"]
+[ext_resource type="Texture2D" uid="uid://cpp8o5kegcxs" path="res://Assets/bubble-circle_blue.png" id="10_q1t35"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yw3j2"]
 radius = 45.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ici66"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_hb5ql")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_mk21v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_xl0y6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_3qpk8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_o5vy8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_bx44h")
+}],
+"loop": false,
+"name": &"death",
+"speed": 14.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_q1t35")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_femvl"]
 
@@ -20,13 +60,14 @@ position = Vector2(123, 298)
 script = ExtResource("1_mmlu5")
 Main = NodePath("..")
 
-[node name="Sprite2D" type="Sprite2D" parent="bubble"]
-z_index = 5
-scale = Vector2(0.705, 0.705)
-texture = ExtResource("4_ima51")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bubble"]
 shape = SubResource("CircleShape2D_yw3j2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="bubble"]
+z_index = 2
+position = Vector2(-1, 0.999997)
+scale = Vector2(0.0833333, 0.0814815)
+sprite_frames = SubResource("SpriteFrames_ici66")
 
 [node name="bg" type="Sprite2D" parent="."]
 show_behind_parent = true
@@ -35,7 +76,7 @@ scale = Vector2(0.738426, 0.829427)
 texture = ExtResource("1_jlrbf")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 4.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamMicrophone_femvl")

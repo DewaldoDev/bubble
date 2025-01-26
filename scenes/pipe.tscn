@@ -5,47 +5,32 @@
 [ext_resource type="Texture2D" uid="uid://yrwnb0h2m3hc" path="res://Assets/obsticle.png" id="2_l0cdb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q5bpn"]
-size = Vector2(16, 267.516)
+size = Vector2(18.0003, 283)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fapru"]
-size = Vector2(10, 120)
+size = Vector2(10, 123)
 
 [node name="pipe" type="Area2D"]
 script = ExtResource("1_t26yg")
 
 [node name="upperS" type="Sprite2D" parent="."]
-position = Vector2(0, 205.5)
+position = Vector2(0, 151.5)
 scale = Vector2(1, 4.23438)
 texture = ExtResource("1_74s6c")
 
 [node name="upperT" type="Sprite2D" parent="."]
-position = Vector2(0, 62)
+position = Vector2(0, 8)
 texture = ExtResource("2_l0cdb")
 
 [node name="upperC" type="CollisionShape2D" parent="."]
-position = Vector2(0, 187.758)
-shape = SubResource("RectangleShape2D_q5bpn")
-
-[node name="lowerS" type="Sprite2D" parent="."]
-position = Vector2(-3.12973e-05, -201.926)
-rotation = 3.14159
-scale = Vector2(1, 3.76863)
-texture = ExtResource("1_74s6c")
-
-[node name="lowerT" type="Sprite2D" parent="."]
-position = Vector2(0, -74)
-rotation = 3.14159
-texture = ExtResource("2_l0cdb")
-
-[node name="lowerC" type="CollisionShape2D" parent="."]
-position = Vector2(3.59286e-05, -200.172)
-rotation = -3.14159
+position = Vector2(0, 144.5)
 shape = SubResource("RectangleShape2D_q5bpn")
 
 [node name="scoreArea" type="Area2D" parent="."]
+position = Vector2(0, -54)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="scoreArea"]
-position = Vector2(13, -6)
+position = Vector2(13, -4.5)
 shape = SubResource("RectangleShape2D_fapru")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
