@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://viq0baj6m47"
-path="res://.godot/imported/pipe.png-98ef994dc2be8db67e4ef6446658185a.ctex"
+uid="uid://4ka3b2csdfb2"
+path="res://.godot/imported/wand.png-f61958c3b12f4637e757c475b6aed95a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/pipe.png"
-dest_files=["res://.godot/imported/pipe.png-98ef994dc2be8db67e4ef6446658185a.ctex"]
+source_file="res://Assets/wand.png"
+dest_files=["res://.godot/imported/wand.png-f61958c3b12f4637e757c475b6aed95a.ctex"]
 
 [params]
 
