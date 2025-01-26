@@ -1,8 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://cutl77cu50gwg"]
+[gd_scene load_steps=6 format=3 uid="uid://cutl77cu50gwg"]
 
 [ext_resource type="Script" path="res://scenes/pipe.gd" id="1_n7b1r"]
-[ext_resource type="Texture2D" uid="uid://ds11mvx8m10bu" path="res://Assets/verticle obsticle.png" id="2_l8erd"]
-[ext_resource type="Texture2D" uid="uid://yrwnb0h2m3hc" path="res://Assets/obsticle.png" id="3_pr4rb"]
 [ext_resource type="Texture2D" uid="uid://kjwby085v0ph" path="res://Assets/o_bricks_piller.png" id="4_f8oad"]
 [ext_resource type="Texture2D" uid="uid://dftpeeje6bb13" path="res://Assets/o_spike.png" id="5_5upm7"]
 
@@ -14,15 +12,6 @@ size = Vector2(10, 123)
 
 [node name="pipe" type="Area2D"]
 script = ExtResource("1_n7b1r")
-
-[node name="upperS" type="Sprite2D" parent="."]
-position = Vector2(0, 151.5)
-scale = Vector2(1, 4.23438)
-texture = ExtResource("2_l8erd")
-
-[node name="upperT" type="Sprite2D" parent="."]
-position = Vector2(0, 8)
-texture = ExtResource("3_pr4rb")
 
 [node name="upperC" type="CollisionShape2D" parent="."]
 position = Vector2(0, 144.5)

@@ -8,7 +8,7 @@ var isBlowing: bool
 
 func _process(delta: float) -> void:
 	if Main.gameRun:
-		if isBlowing || Input.get_axis("ui_up", "ui_down"):
+		if isBlowing || Input.is_anything_pressed():
 			velocity.y = -1 * pSpeed
 
 		velocity += get_gravity()*delta*0.35
@@ -32,5 +32,4 @@ func _on_main_audio_changed(db_level: Variant) -> void:
 	#
 	
 func pop():
-	print("dead")
 	$AnimatedSprite2D.play("death")

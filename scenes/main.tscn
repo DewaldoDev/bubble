@@ -1,8 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://vh6ccnjmqm1d"]
+[gd_scene load_steps=17 format=3 uid="uid://vh6ccnjmqm1d"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_7cf2f"]
 [ext_resource type="Script" path="res://scenes/bubble.gd" id="1_mmlu5"]
-[ext_resource type="PackedScene" uid="uid://bigk8cqannk3x" path="res://scenes/pipe.tscn" id="2_w51ik"]
 [ext_resource type="Texture2D" uid="uid://lit4v2c83i6u" path="res://Assets/bub_pop_frame_1.png" id="4_hb5ql"]
 [ext_resource type="Texture2D" uid="uid://b2v2xdm464t5p" path="res://Assets/bub_pop_frame_2.png" id="5_mk21v"]
 [ext_resource type="Texture2D" uid="uid://dqysy53haldby" path="res://Assets/bub_pop_frame_3.png" id="6_xl0y6"]
@@ -56,7 +55,6 @@ animations = [{
 
 [node name="Main" type="Node"]
 script = ExtResource("1_7cf2f")
-pipeScene = ExtResource("2_w51ik")
 
 [node name="bubble" type="CharacterBody2D" parent="." node_paths=PackedStringArray("Main")]
 position = Vector2(67, 303)
