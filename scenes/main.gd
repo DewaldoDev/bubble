@@ -1,5 +1,5 @@
 extends Node
-var pipeScene = [preload("res://scenes/pillers.tscn"), preload("res://scenes/brick and spike.tscn"), preload("res://scenes/pipe.tscn")]
+@export var pipeScene : PackedScene
 
 signal audio_changed(db_level)
 
@@ -15,6 +15,7 @@ const pipeDelay : int = 100
 const pipeRange : int = 150
 var screen_size : Vector2i
 const soundThresh: int = -20
+
 
 var pipeGap : int = 200
 var scrollSpeed : float = 2
@@ -56,7 +57,7 @@ func _process(delta: float) -> void:
 			pipe.position.x -= scrollSpeed
 	else: 
 		if startWaiting:
-			if (db_level > soundThresh) || (Input.is_anything_pressed()):
+			if db_level > soundThresh:
 				$bubble.scale += scaleAdd
 				if($bubble.scale.x >= 1):
 					$bubble.scale = Vector2(1,1)
@@ -76,9 +77,8 @@ func _process(delta: float) -> void:
 	
 
 func _on_timer_timeout() -> void:
-	var ind = randi_range(0, pipeScene.size()-1)
-	var pipeObj1 = pipeScene[ind].instantiate()
-	var pipeObj2 = pipeScene[ind].instantiate()
+	var pipeObj1 = pipeScene.instantiate()
+	var pipeObj2 = pipeScene.instantiate()
 	
 	pipeObj1.scale = Vector2(2,2)
 	pipeObj2.scale = Vector2(2,-2)

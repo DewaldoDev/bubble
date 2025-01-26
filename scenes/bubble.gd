@@ -2,13 +2,12 @@ extends CharacterBody2D
 @export var Main : Node
 
 const pSpeed = 200.0
-@onready var line = %Line2D
 
 var isBlowing: bool
 
 func _process(delta: float) -> void:
 	if Main.gameRun:
-		if isBlowing || Input.is_anything_pressed():
+		if isBlowing || Input.get_axis("ui_up", "ui_down"):
 			velocity.y = -1 * pSpeed
 
 		velocity += get_gravity()*delta*0.35
@@ -32,4 +31,5 @@ func _on_main_audio_changed(db_level: Variant) -> void:
 	#
 	
 func pop():
+	print("dead")
 	$AnimatedSprite2D.play("death")
