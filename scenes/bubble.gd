@@ -32,5 +32,5 @@ func _on_main_audio_changed(db_level: Variant) -> void:
 	
 func pop():
 	print("dead")
-	$AudioManager.play_fx(0)
+	#$AudioManager.play_fx(0)
 	$AnimatedSprite2D.play("death")

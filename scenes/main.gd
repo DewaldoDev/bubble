@@ -1,6 +1,7 @@
 extends Node
 
 var pipeScene = [preload("res://scenes/obsticles/brick and spike.tscn"), preload("res://scenes/obsticles/lamp_obsticle.tscn"), preload("res://scenes/obsticles/no_bubbles_obsticle.tscn"), preload("res://scenes/obsticles/pillers.tscn")]
+@onready var label = $Label
 
 signal audio_changed(db_level)
 
@@ -47,6 +48,9 @@ func startGame():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	
+	
+	
 	var db_level = AudioServer.get_bus_peak_volume_left_db(AudioServer.get_bus_index("Capture"), 0)
 	audio_changed.emit(db_level)
 	if gameRun:
@@ -107,7 +111,9 @@ func stopGame():
 	$bubble.pop()
 
 func scoreIncrement(): # scrollSpeed, pipeGap, timer
+	
 	score+=1
+	label.text = str(score)
 	$AudioManager.play_fx(1)
 
 	if score == 2:
