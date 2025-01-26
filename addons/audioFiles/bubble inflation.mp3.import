@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ctlks18sok7nt"
+path="res://.godot/imported/bubble inflation.mp3-9df6dcff68a243494f7c0503d3fddf5a.mp3str"
+
+[deps]
+
+source_file="res://addons/audioFiles/bubble inflation.mp3"
+dest_files=["res://.godot/imported/bubble inflation.mp3-9df6dcff68a243494f7c0503d3fddf5a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

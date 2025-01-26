@@ -1,8 +1,7 @@
-[gd_scene load_steps=25 format=3 uid="uid://vh6ccnjmqm1d"]
+[gd_scene load_steps=28 format=3 uid="uid://vh6ccnjmqm1d"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_7cf2f"]
 [ext_resource type="Script" path="res://scenes/bubble.gd" id="1_mmlu5"]
-[ext_resource type="PackedScene" uid="uid://bigk8cqannk3x" path="res://scenes/pipe.tscn" id="2_w51ik"]
 [ext_resource type="Texture2D" uid="uid://lit4v2c83i6u" path="res://Assets/bub_pop_frame_1.png" id="4_hb5ql"]
 [ext_resource type="Texture2D" uid="uid://b2v2xdm464t5p" path="res://Assets/bub_pop_frame_2.png" id="5_mk21v"]
 [ext_resource type="Texture2D" uid="uid://dqysy53haldby" path="res://Assets/bub_pop_frame_3.png" id="6_xl0y6"]
@@ -14,9 +13,13 @@
 [ext_resource type="Texture2D" uid="uid://bufhmqxxo4dvb" path="res://Assets/ground.png" id="12_l2puo"]
 [ext_resource type="Texture2D" uid="uid://4ka3b2csdfb2" path="res://Assets/wand.png" id="13_g31xe"]
 [ext_resource type="Texture2D" uid="uid://n3nqbrobkuhi" path="res://Assets/clouds_shadow.png" id="13_t02v7"]
+[ext_resource type="Texture2D" uid="uid://bv4pelmf6dn0t" path="res://Assets/bubble_buildings.webp" id="13_uqycs"]
 [ext_resource type="Texture2D" uid="uid://deei4xa4g1vb4" path="res://Assets/blow.png" id="15_y371w"]
 [ext_resource type="Texture2D" uid="uid://cuwqd8nwqcjgs" path="res://Assets/ready.png" id="16_cyr74"]
 [ext_resource type="Texture2D" uid="uid://1k1a222lyx1w" path="res://Assets/set.png" id="17_7iorw"]
+[ext_resource type="PackedScene" uid="uid://b2yrjlexgqqvi" path="res://addons/audio-manager/AudioManager.tscn" id="17_isvxb"]
+[ext_resource type="AudioStream" uid="uid://byckb5y617d68" path="res://addons/audioFiles/obsticle complete.mp3" id="18_bjjw8"]
+[ext_resource type="AudioStream" uid="uid://yf47lqh5cgc4" path="res://addons/audioFiles/pop sound.mp3" id="19_fr5et"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yw3j2"]
 radius = 45.0
@@ -83,6 +86,81 @@ animations = [{
 "name": &"set",
 "speed": 5.0
 }]
+
+[sub_resource type="Animation" id="Animation_f773g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(308, 544)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.404387, 0.377246)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:animation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"ready"]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_8lpuj"]
 resource_name = "intro_animation"
@@ -160,81 +238,6 @@ tracks/5/keys = {
 "values": [0.0, 0.523599, -0.523599, 0.523599, 0.0]
 }
 
-[sub_resource type="Animation" id="Animation_f773g"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(308, 544)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.404387, 0.377246)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath(".:animation")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"ready"]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath(".:rotation")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wpea4"]
 _data = {
 "RESET": SubResource("Animation_f773g"),
@@ -243,7 +246,6 @@ _data = {
 
 [node name="Main" type="Node"]
 script = ExtResource("1_7cf2f")
-pipeScene = ExtResource("2_w51ik")
 
 [node name="bubble" type="CharacterBody2D" parent="." node_paths=PackedStringArray("Main")]
 position = Vector2(67, 303)
@@ -300,6 +302,18 @@ position = Vector2(962, -520)
 scale = Vector2(0.133195, 0.139815)
 texture = ExtResource("13_t02v7")
 
+[node name="BubbleBuildings" type="Sprite2D" parent="Ground"]
+z_index = -4
+position = Vector2(321, -83)
+scale = Vector2(0.934877, 1.09677)
+texture = ExtResource("13_uqycs")
+
+[node name="BubbleBuildings2" type="Sprite2D" parent="Ground"]
+z_index = -4
+position = Vector2(967, -83)
+scale = Vector2(0.934877, 1.09677)
+texture = ExtResource("13_uqycs")
+
 [node name="Wand" type="Sprite2D" parent="."]
 position = Vector2(32.6581, 414)
 scale = Vector2(0.492646, 0.32)
@@ -317,6 +331,9 @@ animation = &"ready"
 libraries = {
 "": SubResource("AnimationLibrary_wpea4")
 }
+
+[node name="AudioManager" parent="." instance=ExtResource("17_isvxb")]
+effects = Array[Resource]([ExtResource("18_bjjw8"), ExtResource("19_fr5et")])
 
 [connection signal="audio_changed" from="." to="bubble" method="_on_main_audio_changed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,5 +1,6 @@
 extends Node
-@export var pipeScene : PackedScene
+
+var pipeScene = [preload("res://scenes/obsticles/brick and spike.tscn"), preload("res://scenes/obsticles/lamp_obsticle.tscn"), preload("res://scenes/obsticles/no_bubbles_obsticle.tscn"), preload("res://scenes/obsticles/pillers.tscn")]
 
 signal audio_changed(db_level)
 
@@ -57,7 +58,7 @@ func _process(delta: float) -> void:
 			pipe.position.x -= scrollSpeed
 	else: 
 		if startWaiting:
-			if db_level > soundThresh:
+			if db_level > soundThresh || Input.is_anything_pressed():
 				$bubble.scale += scaleAdd
 				if($bubble.scale.x >= 1):
 					$bubble.scale = Vector2(1,1)
@@ -77,8 +78,9 @@ func _process(delta: float) -> void:
 	
 
 func _on_timer_timeout() -> void:
-	var pipeObj1 = pipeScene.instantiate()
-	var pipeObj2 = pipeScene.instantiate()
+	var ind = randi_range(0, pipeScene.size()-1)
+	var pipeObj1 = pipeScene[ind].instantiate()
+	var pipeObj2 = pipeScene[ind].instantiate()
 	
 	pipeObj1.scale = Vector2(2,2)
 	pipeObj2.scale = Vector2(2,-2)
@@ -106,7 +108,8 @@ func stopGame():
 
 func scoreIncrement(): # scrollSpeed, pipeGap, timer
 	score+=1
-	
+	$AudioManager.play_fx(1)
+
 	if score == 2:
 		scrollSpeed=3
 		$Timer.wait_time=3
