@@ -1,0 +1,76 @@
+[gd_scene load_steps=7 format=3 uid="uid://cutl77cu50gwg"]
+
+[ext_resource type="Script" path="res://scenes/pipe.gd" id="1_r8h4j"]
+[ext_resource type="Texture2D" uid="uid://kjwby085v0ph" path="res://Assets/o_bricks_piller.png" id="2_hmfsn"]
+[ext_resource type="Texture2D" uid="uid://dftpeeje6bb13" path="res://Assets/o_spike.png" id="3_mtjlg"]
+[ext_resource type="Texture2D" uid="uid://c7iwx12japh00" path="res://Assets/o_bloody_bricks.png" id="4_hyuhn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q5bpn"]
+size = Vector2(18.0003, 283)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fapru"]
+size = Vector2(10, 123)
+
+[node name="pipe" type="Area2D"]
+script = ExtResource("1_r8h4j")
+
+[node name="upperC" type="CollisionShape2D" parent="."]
+position = Vector2(0, 144.5)
+shape = SubResource("RectangleShape2D_q5bpn")
+
+[node name="scoreArea" type="Area2D" parent="."]
+position = Vector2(0, -54)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="scoreArea"]
+position = Vector2(13, -4.5)
+shape = SubResource("RectangleShape2D_fapru")
+
+[node name="OBricksPiller" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, 99)
+scale = Vector2(1.125, 1)
+texture = ExtResource("2_hmfsn")
+
+[node name="OBricksPiller2" type="Sprite2D" parent="."]
+position = Vector2(0, 267)
+scale = Vector2(1.125, 1)
+texture = ExtResource("2_hmfsn")
+
+[node name="OSpike" type="Sprite2D" parent="."]
+position = Vector2(0, 16)
+scale = Vector2(0.0514286, 0.0670103)
+texture = ExtResource("3_mtjlg")
+
+[node name="OBloodyBricks" type="Sprite2D" parent="."]
+position = Vector2(0, 55.5088)
+scale = Vector2(0.0351563, 0.0577916)
+texture = ExtResource("4_hyuhn")
+
+[node name="OBloodyBricks2" type="Sprite2D" parent="."]
+position = Vector2(0, 111)
+scale = Vector2(0.0351563, 0.0577916)
+texture = ExtResource("4_hyuhn")
+
+[node name="OBloodyBricks3" type="Sprite2D" parent="."]
+position = Vector2(0, 166)
+scale = Vector2(0.0351563, 0.0577916)
+texture = ExtResource("4_hyuhn")
+
+[node name="OBloodyBricks4" type="Sprite2D" parent="."]
+position = Vector2(9.53674e-07, 221.509)
+scale = Vector2(0.0351563, 0.0577916)
+texture = ExtResource("4_hyuhn")
+
+[node name="OBloodyBricks5" type="Sprite2D" parent="."]
+position = Vector2(9.53674e-07, 276.509)
+scale = Vector2(0.0351563, 0.0577916)
+texture = ExtResource("4_hyuhn")
+
+[node name="OBloodyBricks6" type="Sprite2D" parent="."]
+position = Vector2(0, 331)
+scale = Vector2(0.0351563, 0.0577916)
+texture = ExtResource("4_hyuhn")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="area_entered" from="scoreArea" to="." method="_on_score_area_area_entered"]
+[connection signal="body_entered" from="scoreArea" to="." method="_on_score_area_body_entered"]

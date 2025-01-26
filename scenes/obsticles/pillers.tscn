@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bchdsu8nxrh2e"]
+[gd_scene load_steps=8 format=3 uid="uid://bchdsu8nxrh2e"]
 
 [ext_resource type="Script" path="res://scenes/pipe.gd" id="1_7ulpn"]
 [ext_resource type="Texture2D" uid="uid://ds11mvx8m10bu" path="res://Assets/verticle obsticle.png" id="2_mvyoh"]
 [ext_resource type="Texture2D" uid="uid://dft3stme66l56" path="res://Assets/o_pillar.png" id="2_ygyv8"]
 [ext_resource type="Texture2D" uid="uid://yrwnb0h2m3hc" path="res://Assets/obsticle.png" id="3_drfpf"]
+[ext_resource type="Texture2D" uid="uid://yaygiuro7vqj" path="res://Assets/o_moss_bricks.png" id="5_gkyao"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q5bpn"]
 size = Vector2(18.0003, 283)
@@ -20,6 +21,7 @@ scale = Vector2(0.0580645, 0.28125)
 texture = ExtResource("2_ygyv8")
 
 [node name="OPillar2" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(0, 219)
 scale = Vector2(0.0580645, 0.28125)
 texture = ExtResource("2_ygyv8")
@@ -45,6 +47,24 @@ position = Vector2(0, -54)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="scoreArea"]
 position = Vector2(13, -4.5)
 shape = SubResource("RectangleShape2D_fapru")
+
+[node name="OMossBricks" type="Sprite2D" parent="."]
+position = Vector2(0, 179)
+rotation = -3.14159
+scale = Vector2(0.0351563, 0.0685399)
+texture = ExtResource("5_gkyao")
+
+[node name="OMossBricks2" type="Sprite2D" parent="."]
+position = Vector2(0, 244)
+rotation = -3.14159
+scale = Vector2(0.0351563, 0.0685399)
+texture = ExtResource("5_gkyao")
+
+[node name="OMossBricks3" type="Sprite2D" parent="."]
+position = Vector2(0, 309)
+rotation = -3.14159
+scale = Vector2(0.0351563, 0.0685399)
+texture = ExtResource("5_gkyao")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="area_entered" from="scoreArea" to="." method="_on_score_area_area_entered"]

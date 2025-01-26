@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cutl77cu50gwg"]
+[gd_scene load_steps=7 format=3 uid="uid://brbu13x12h4n8"]
 
-[ext_resource type="Script" path="res://scenes/pipe.gd" id="1_n7b1r"]
-[ext_resource type="Texture2D" uid="uid://kjwby085v0ph" path="res://Assets/o_bricks_piller.png" id="4_f8oad"]
-[ext_resource type="Texture2D" uid="uid://dftpeeje6bb13" path="res://Assets/o_spike.png" id="5_5upm7"]
+[ext_resource type="Script" path="res://scenes/pipe.gd" id="1_k5aqc"]
+[ext_resource type="Texture2D" uid="uid://kjwby085v0ph" path="res://Assets/o_bricks_piller.png" id="2_v3gd7"]
+[ext_resource type="Texture2D" uid="uid://dftpeeje6bb13" path="res://Assets/o_spike.png" id="3_j1hnq"]
+[ext_resource type="Texture2D" uid="uid://dp171xytvgsiq" path="res://Assets/o_no.png" id="4_6qcbx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q5bpn"]
 size = Vector2(18.0003, 283)
@@ -11,7 +12,7 @@ size = Vector2(18.0003, 283)
 size = Vector2(10, 123)
 
 [node name="pipe" type="Area2D"]
-script = ExtResource("1_n7b1r")
+script = ExtResource("1_k5aqc")
 
 [node name="upperC" type="CollisionShape2D" parent="."]
 position = Vector2(0, 144.5)
@@ -25,19 +26,26 @@ position = Vector2(13, -4.5)
 shape = SubResource("RectangleShape2D_fapru")
 
 [node name="OBricksPiller" type="Sprite2D" parent="."]
-position = Vector2(0, 99)
+position = Vector2(0, 135)
 scale = Vector2(1.125, 1)
-texture = ExtResource("4_f8oad")
+texture = ExtResource("2_v3gd7")
 
 [node name="OBricksPiller2" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(0, 267)
 scale = Vector2(1.125, 1)
-texture = ExtResource("4_f8oad")
+texture = ExtResource("2_v3gd7")
 
 [node name="OSpike" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(0, 9)
 scale = Vector2(0.0514286, 0.0309278)
-texture = ExtResource("5_5upm7")
+texture = ExtResource("3_j1hnq")
+
+[node name="NoBubsSignage" type="Sprite2D" parent="."]
+position = Vector2(-1.90735e-06, 27)
+scale = Vector2(0.0576923, 0.0576923)
+texture = ExtResource("4_6qcbx")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="area_entered" from="scoreArea" to="." method="_on_score_area_area_entered"]
