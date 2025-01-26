@@ -50,8 +50,8 @@ scale = Vector2(0.145161, 0.145161)
 texture = ExtResource("4_6crnt")
 
 [node name="OBlueBricks" type="Sprite2D" parent="."]
-position = Vector2(0, 106.387)
-scale = Vector2(0.0351563, 0.0622128)
+position = Vector2(0, 137.387)
+scale = Vector2(0.0351563, 0.127339)
 texture = ExtResource("5_rwkwd")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

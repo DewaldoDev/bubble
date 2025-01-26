@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://vh6ccnjmqm1d"]
+[gd_scene load_steps=27 format=3 uid="uid://vh6ccnjmqm1d"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_7cf2f"]
 [ext_resource type="Script" path="res://scenes/bubble.gd" id="1_mmlu5"]
@@ -17,8 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://deei4xa4g1vb4" path="res://Assets/blow.png" id="15_y371w"]
 [ext_resource type="Texture2D" uid="uid://cuwqd8nwqcjgs" path="res://Assets/ready.png" id="16_cyr74"]
 [ext_resource type="Texture2D" uid="uid://1k1a222lyx1w" path="res://Assets/set.png" id="17_7iorw"]
-[ext_resource type="PackedScene" uid="uid://b2yrjlexgqqvi" path="res://addons/audio-manager/AudioManager.tscn" id="17_isvxb"]
-[ext_resource type="AudioStream" uid="uid://byckb5y617d68" path="res://addons/audioFiles/obsticle complete.mp3" id="18_bjjw8"]
+[ext_resource type="AudioStream" uid="uid://1kf71dqar3pp" path="res://addons/audioFiles/obsticle complete (2).mp3" id="18_uo26a"]
 [ext_resource type="AudioStream" uid="uid://yf47lqh5cgc4" path="res://addons/audioFiles/pop sound.mp3" id="19_fr5et"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yw3j2"]
@@ -343,8 +342,16 @@ libraries = {
 "": SubResource("AnimationLibrary_wpea4")
 }
 
-[node name="AudioManager" parent="." instance=ExtResource("17_isvxb")]
-effects = Array[Resource]([ExtResource("18_bjjw8"), ExtResource("19_fr5et")])
+[node name="blowSFX" type="AudioStreamPlayer2D" parent="."]
+
+[node name="scoreSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_uo26a")
+volume_db = 1.253
+
+[node name="popSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("19_fr5et")
+volume_db = 1.253
+pitch_scale = 1.04
 
 [connection signal="audio_changed" from="." to="bubble" method="_on_main_audio_changed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

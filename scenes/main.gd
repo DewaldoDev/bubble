@@ -106,15 +106,15 @@ func _on_timer_timeout() -> void:
 	pipes.append(pipeObj2)
 
 func stopGame():
+	$popSFX.play()
 	gameRun=false
 	$Timer.stop()
 	$bubble.pop()
 
 func scoreIncrement(): # scrollSpeed, pipeGap, timer
-	
+	$scoreSFX.play()
 	score+=1
 	label.text = str(score)
-	$AudioManager.play_fx(1)
 
 	if score == 2:
 		scrollSpeed=3
